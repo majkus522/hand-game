@@ -1,0 +1,169 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ignoredPackages">
+        <list>
+          <option value="aiofiles" />
+          <option value="aiosqlite" />
+          <option value="anyio" />
+          <option value="appdirs" />
+          <option value="argon2-cffi" />
+          <option value="argon2-cffi-bindings" />
+          <option value="arrow" />
+          <option value="asttokens" />
+          <option value="attrs" />
+          <option value="autopep8" />
+          <option value="Babel" />
+          <option value="backcall" />
+          <option value="beautifulsoup4" />
+          <option value="bleach" />
+          <option value="cachetools" />
+          <option value="cffi" />
+          <option value="colorama" />
+          <option value="comm" />
+          <option value="contourpy" />
+          <option value="cycler" />
+          <option value="debugpy" />
+          <option value="decorator" />
+          <option value="defusedxml" />
+          <option value="distlib" />
+          <option value="dnspython" />
+          <option value="executing" />
+          <option value="fastjsonschema" />
+          <option value="filelock" />
+          <option value="fonttools" />
+          <option value="fqdn" />
+          <option value="google-auth" />
+          <option value="google-auth-oauthlib" />
+          <option value="ipykernel" />
+          <option value="ipython" />
+          <option value="ipython-genutils" />
+          <option value="isoduration" />
+          <option value="jax" />
+          <option value="jedi" />
+          <option value="Jinja2" />
+          <option value="joblib" />
+          <option value="json5" />
+          <option value="jsonpointer" />
+          <option value="jsonschema" />
+          <option value="jupyter-events" />
+          <option value="jupyter-ydoc" />
+          <option value="jupyter_client" />
+          <option value="jupyter_core" />
+          <option value="jupyter_server" />
+          <option value="jupyter_server_fileid" />
+          <option value="jupyter_server_terminals" />
+          <option value="jupyter_server_ydoc" />
+          <option value="jupyterlab" />
+          <option value="jupyterlab-pygments" />
+          <option value="jupyterlab_server" />
+          <option value="kiwisolver" />
+          <option value="loguru" />
+          <option value="Mako" />
+          <option value="matplotlib" />
+          <option value="matplotlib-inline" />
+          <option value="mistune" />
+          <option value="ml-botting-core" />
+          <option value="MouseInfo" />
+          <option value="mplcyberpunk" />
+          <option value="mss" />
+          <option value="nbclassic" />
+          <option value="nbclient" />
+          <option value="nbconvert" />
+          <option value="nbformat" />
+          <option value="nest-asyncio" />
+          <option value="notebook" />
+          <option value="notebook_shim" />
+          <option value="oauthlib" />
+          <option value="opencv-python" />
+          <option value="pandas" />
+          <option value="pandocfilters" />
+          <option value="parso" />
+          <option value="pickleshare" />
+          <option value="platformdirs" />
+          <option value="prometheus-client" />
+          <option value="prompt-toolkit" />
+          <option value="psutil" />
+          <option value="pure-eval" />
+          <option value="pyasn1" />
+          <option value="pyasn1-modules" />
+          <option value="PyAutoGUI" />
+          <option value="pycodestyle" />
+          <option value="pycparser" />
+          <option value="PyGetWindow" />
+          <option value="pygubu" />
+          <option value="pygubu-designer" />
+          <option value="pymongo" />
+          <option value="PyMsgBox" />
+          <option value="pyparsing" />
+          <option value="pyperclip" />
+          <option value="PyRect" />
+          <option value="pyrsistent" />
+          <option value="PyScreeze" />
+          <option value="pytesseract" />
+          <option value="python-dateutil" />
+          <option value="python-dotenv" />
+          <option value="python-json-logger" />
+          <option value="pytweening" />
+          <option value="pytz" />
+          <option value="pywin32" />
+          <option value="pywinpty" />
+          <option value="PyYAML" />
+          <option value="pyzmq" />
+          <option value="requests-oauthlib" />
+          <option value="rfc3339-validator" />
+          <option value="rfc3986-validator" />
+          <option value="rsa" />
+          <option value="scikit-learn" />
+          <option value="scipy" />
+          <option value="screeninfo" />
+          <option value="seaborn" />
+          <option value="Send2Trash" />
+          <option value="sklearn" />
+          <option value="sniffio" />
+          <option value="soupsieve" />
+          <option value="stack-data" />
+          <option value="tensorboard-plugin-wit" />
+          <option value="tensorflow" />
+          <option value="tensorflow-estimator" />
+          <option value="tensorflow-intel" />
+          <option value="tensorflow-io-gcs-filesystem" />
+          <option value="terminado" />
+          <option value="threadpoolctl" />
+          <option value="tinycss2" />
+          <option value="tomli" />
+          <option value="tornado" />
+          <option value="tqdm" />
+          <option value="traitlets" />
+          <option value="uri-template" />
+          <option value="virtualenv" />
+          <option value="wcwidth" />
+          <option value="webcolors" />
+          <option value="webencodings" />
+          <option value="websocket-client" />
+          <option value="win32-setctime" />
+          <option value="WMI" />
+          <option value="xmltodict" />
+          <option value="y-py" />
+          <option value="ypy-websocket" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="input" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
