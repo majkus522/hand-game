@@ -1,3 +1,5 @@
+import json
+
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QFrame, QLabel, QPushButton
@@ -21,7 +23,7 @@ class DifficultyScreen(QWidget):
 		                border: 2px solid #333;
 		            }
 		        """)
-		menu_frame.setFixedSize(350, 300)
+		menu_frame.setFixedSize(350, 400)
 
 		frame_layout = QVBoxLayout(menu_frame)
 		frame_layout.setContentsMargins(20, 20, 20, 20)
@@ -33,29 +35,21 @@ class DifficultyScreen(QWidget):
 		title.setFont(QFont("Arial", 20, QFont.Weight.Bold))
 		frame_layout.addWidget(title)
 
-		self.btn_easy = QPushButton("Easy")
-		self.btn_normal = QPushButton("Normal")
-		self.btn_hard = QPushButton("Hard")
-
-		for btn in (self.btn_easy, self.btn_normal, self.btn_hard):
-			btn.setFont(QFont("Arial", 14))
-			btn.setMinimumHeight(45)
-			btn.setStyleSheet("""
-		                QPushButton {
-		                    background-color: #eee;
-		                    border: 1px solid #aaa;
-		                    border-radius: 5px;
-		                }
-		                QPushButton:hover {
-		                    background-color: #ddd;
-		                }
-		            """)
-			frame_layout.addWidget(btn)
-
-		self.btn_easy.clicked.connect(lambda: self.difficultySelected.emit("Bardzo łatwe"))
-		self.btn_normal.clicked.connect(lambda: self.difficultySelected.emit("Łatwe"))
-		self.btn_hard.clicked.connect(lambda: self.difficultySelected.emit("Normalne"))
-		self.btn_hard.clicked.connect(lambda: self.difficultySelected.emit("Trudne"))
-		self.btn_hard.clicked.connect(lambda: self.difficultySelected.emit("Bardzo trudne"))
+		for e in json.loads(open("difficulties.json", "r").read()):
+			button = QPushButton(e["text"])
+			button.setFont(QFont("Arial", 14))
+			button.setMinimumHeight(45)
+			button.setStyleSheet("""
+					                QPushButton {
+					                    background-color: #eee;
+					                    border: 1px solid #aaa;
+					                    border-radius: 5px;
+					                }
+					                QPushButton:hover {
+					                    background-color: #ddd;
+					                }
+					            """)
+			frame_layout.addWidget(button)
+			button.clicked.connect(lambda: self.difficultySelected.emit(e["id"]))
 
 		overlay_layout.addWidget(menu_frame)

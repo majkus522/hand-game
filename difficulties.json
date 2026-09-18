@@ -1,0 +1,22 @@
+[
+	{
+		"id": "veryEasy",
+		"text": "Bardzo łatwy"
+	},
+	{
+		"id": "easy",
+		"text": "Łatwy"
+	},
+	{
+		"id": "normal",
+		"text": "Normalny"
+	},
+	{
+		"id": "hard",
+		"text": "Trudny"
+	},
+	{
+		"id": "veryHard",
+		"text": "Bardzo trudny"
+	}
+]
