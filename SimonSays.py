@@ -1,14 +1,7 @@
-import random
-from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QGridLayout, QLabel, QMainWindow, QVBoxLayout, QWidget
-from ColorButton import ColorButton
+from PySide6.QtWidgets import QWidget, QGridLayout
 
-import sys
-from PySide6.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QPushButton
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QFont
-
-from DifficultyDialog import DifficultyDialog
+from DifficultyScreen import DifficultyScreen
+from Game import Game
 
 symbols = ["A", "B", "C", "D", "E", "F", "G", "H"]
 gridSize = (4, 2)
@@ -19,36 +12,16 @@ class SimonSays(QWidget):
 
 		self.setStyleSheet("background-color: #000045")
 
-		mainLayout = QVBoxLayout(self)
-		mainLayout.setContentsMargins(20, 20, 20, 20)
+		mainLayout = QGridLayout(self)
+		mainLayout.setContentsMargins(0, 0, 0, 0)
 		mainLayout.setSpacing(20)
 
-		splitLayout = QHBoxLayout()
-		splitLayout.setSpacing(20)
-		mainLayout.addLayout(splitLayout)
+		self.gameScreen = Game(self)
+		mainLayout.addWidget(self.gameScreen, 0, 0)
 
-		self.gamePanel = QWidget()
-		self.gamePanel.setObjectName("gamePanel")
-		self.gamePanel.setStyleSheet("#gamePanel { border: 2px solid white; }")
-		splitLayout.addWidget(self.gamePanel, stretch=3)
+		self.difficultyScreen = DifficultyScreen(self)
+		mainLayout.addWidget(self.difficultyScreen, 0, 0)
+		self.difficultyScreen.difficultySelected.connect(self.start_game)
 
-		self.cameraPanel = QWidget()
-		self.cameraPanel.setObjectName("cameraPanel")
-		self.cameraPanel.setStyleSheet("#cameraPanel { border: 2px solid white; }")
-		
-		cameraInner = QVBoxLayout(self.cameraPanel)
-		cameraInner.setContentsMargins(20, 20, 20, 20)
-		cameraInner.setSpacing(10)
-
-		self.cameraText = QLabel("Podgląd Kamery")
-		self.cameraText.setStyleSheet("color: white")
-		self.cameraText.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
-		self.cameraText.setFont(QFont("Arial", 22, QFont.Weight.Bold))
-		self.cameraText.setWordWrap(True)
-
-		cameraInner.addWidget(self.cameraText)
-		cameraInner.addStretch()
-		splitLayout.addWidget(self.cameraPanel, stretch=1)
-
-		dialog = DifficultyDialog(self)
-		result = dialog.exec()
+	def start_game(self, difficulty):
+		self.difficultyScreen.hide()
