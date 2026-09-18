@@ -25,3 +25,4 @@ class SimonSays(QWidget):
 
 	def start_game(self, difficulty):
 		self.difficultyScreen.hide()
+		self.gameScreen.difficultySelected.emit(difficulty)

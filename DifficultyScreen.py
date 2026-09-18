@@ -35,8 +35,10 @@ class DifficultyScreen(QWidget):
 		title.setFont(QFont("Arial", 20, QFont.Weight.Bold))
 		frame_layout.addWidget(title)
 
-		for e in json.loads(open("difficulties.json", "r").read()):
-			button = QPushButton(e["text"])
+		data = dict(json.loads(open("difficulties.json", "r").read()))
+		for e in data.keys():
+			print(e)
+			button = QPushButton(data[e]["text"])
 			button.setFont(QFont("Arial", 14))
 			button.setMinimumHeight(45)
 			button.setStyleSheet("""
@@ -49,7 +51,7 @@ class DifficultyScreen(QWidget):
 					                    background-color: #ddd;
 					                }
 					            """)
+			button.clicked.connect(lambda checked=False, current = e: self.difficultySelected.emit(current))
 			frame_layout.addWidget(button)
-			button.clicked.connect(lambda: self.difficultySelected.emit(e["id"]))
 
 		overlay_layout.addWidget(menu_frame)

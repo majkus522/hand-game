@@ -5,6 +5,6 @@ from SimonSays import SimonSays
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
 	window = SimonSays()
-	window.resize(1500, 800)
+	window.resize(1920 - 10, 1080 - 50 - 40)
 	window.show()
 	sys.exit(app.exec())

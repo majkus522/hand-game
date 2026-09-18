@@ -1,22 +1,32 @@
-[
-	{
-		"id": "veryEasy",
-		"text": "Bardzo łatwy"
+{
+	"veryEasy": {
+		"text": "Bardzo łatwy",
+		"x": 2,
+		"y": 2,
+		"image": true
 	},
-	{
-		"id": "easy",
-		"text": "Łatwy"
+	"easy": {
+		"text": "Łatwy",
+		"x": 4,
+		"y": 2,
+		"image": true
 	},
-	{
-		"id": "normal",
-		"text": "Normalny"
+	"normal": {
+		"text": "Normalny",
+		"x": 2,
+		"y": 2,
+		"image": false
 	},
-	{
-		"id": "hard",
-		"text": "Trudny"
+	"hard": {
+		"text": "Trudny",
+		"x": 4,
+		"y": 2,
+		"image": false
 	},
-	{
-		"id": "veryHard",
-		"text": "Bardzo trudny"
+	"veryHard": {
+		"text": "Bardzo trudny",
+		"x": 4,
+		"y": 4,
+		"image": false
 	}
-]
+}

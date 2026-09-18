@@ -4,13 +4,13 @@ from PySide6.QtWidgets import QPushButton, QSizePolicy
 class ColorButton(QPushButton):
 	def __init__(self, text, parent):
 		super().__init__(text, parent)
-		self.setFixedSize(130, 130)
+		self.setFixedSize(200, 200)
 		self.STYLE_TEMPLATE = """
             QPushButton
             {{
                 color: {color};
                 border: none;
-                font-size: 45px;
+                font-size: 60px;
                 font-weight: 700;
                 margin: 0;
                 padding: 0;
