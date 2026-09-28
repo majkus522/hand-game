@@ -11,8 +11,8 @@ class Game(QWidget):
 	def __init__(self, parent=None):
 		super().__init__(parent)
 
-		splitLayout = QHBoxLayout(self)
-		splitLayout.setSpacing(20)
+		self.splitLayout = QHBoxLayout(self)
+		self.splitLayout.setSpacing(20)
 
 		self.gamePanel = QVBoxLayout()
 
@@ -21,9 +21,6 @@ class Game(QWidget):
 		self.gamePanel.addWidget(self.label)
 
 		self.game = QWidget()
-		self.game.setObjectName("game")
-		self.game.setStyleSheet("#game { border: 2px solid white; }")
-		splitLayout.addWidget(self.game)
 
 		SignalBus.bus.difficultySignal.connect(self.init)
 
@@ -34,6 +31,22 @@ class Game(QWidget):
 		self.maxLength = -1
 
 	def init(self, difficulty):
+		self.sequence = []
+		self.sequenceStep = -1
+		self.buttons = dict()
+		self.showingSequence = False
+		self.maxLength = -1
+
+		while self.splitLayout.count():
+			child = self.splitLayout.takeAt(0)
+			if child.widget():
+				child.widget().deleteLater()
+
+		self.game = QWidget()
+		self.game.setObjectName("game")
+		self.game.setStyleSheet("#game { border: 2px solid white; }")
+		self.splitLayout.addWidget(self.game)
+
 		grid_layout = QGridLayout()
 		grid_layout.setSpacing(20)
 		grid_layout.setContentsMargins(0, 0, 0, 0)
@@ -73,7 +86,7 @@ class Game(QWidget):
 			self.fail()
 
 	def fail(self):
-		for e in self.buttons:
+		for e in self.buttons.values():
 			e.fail()
 		self.sequence = []
 		self.sequence.append(random.choice(list(self.buttons.keys())))
