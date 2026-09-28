@@ -1,7 +1,8 @@
 import json
 import random
-from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QGridLayout
+from PySide6.QtCore import QTimer, Qt
+from PySide6.QtGui import QFont
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QGridLayout
 import SignalBus
 from LetterButton import LetterButton
 
@@ -11,16 +12,13 @@ class Game(QWidget):
 	def __init__(self, parent=None):
 		super().__init__(parent)
 
-		self.splitLayout = QHBoxLayout(self)
+		self.setStyleSheet("border: 2px solid white")
+
+		self.splitLayout = QVBoxLayout(self)
 		self.splitLayout.setSpacing(20)
 
-		self.gamePanel = QVBoxLayout()
-
-		self.label = QLabel(self)
-		self.label.setText("Current score: 0")
-		self.gamePanel.addWidget(self.label)
-
 		self.game = QWidget()
+		self.label = QLabel()
 
 		SignalBus.bus.difficultySignal.connect(self.init)
 
@@ -43,9 +41,14 @@ class Game(QWidget):
 				child.widget().deleteLater()
 
 		self.game = QWidget()
-		self.game.setObjectName("game")
-		self.game.setStyleSheet("#game { border: 2px solid white; }")
 		self.splitLayout.addWidget(self.game)
+
+		self.label = QLabel("Obecny wynik: 0")
+		self.label.setFont(QFont("Arial", 24, QFont.Weight.Bold))
+		self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+		self.label.setContentsMargins(10, 10, 10, 10)
+		self.label.setStyleSheet("border: none; background-color: transparent; color: #f1f5f9;")
+		self.splitLayout.addWidget(self.label)
 
 		grid_layout = QGridLayout()
 		grid_layout.setSpacing(20)
@@ -54,6 +57,7 @@ class Game(QWidget):
 		data = json.loads(open("difficulties.json", "r").read())[difficulty]
 		self.maxLength = data["sequenceLength"]
 		symbolsToDo = self.SYMBOLS.copy()
+
 		for x in range(data["x"]):
 			for y in range(data["y"]):
 				letter = random.choice(symbolsToDo)
@@ -107,7 +111,7 @@ class Game(QWidget):
 		for e in self.buttons.values():
 			e.reset()
 		self.showingSequence = True
-		self.label.setText(f"Current score: {len(self.sequence) - 1}")
+		self.label.setText(f"Obecny wynik: {len(self.sequence) - 1}")
 		self.sequenceStep = -1
 		self.showSequenceStep()
 
