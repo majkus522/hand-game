@@ -2,7 +2,7 @@ import json
 import random
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QGridLayout
-import signalBus
+import SignalBus
 from LetterButton import LetterButton
 
 class Game(QWidget):
@@ -25,7 +25,7 @@ class Game(QWidget):
 		self.game.setStyleSheet("#game { border: 2px solid white; }")
 		splitLayout.addWidget(self.game)
 
-		signalBus.bus.difficultySignal.connect(self.init)
+		SignalBus.bus.difficultySignal.connect(self.init)
 
 		self.sequence = []
 		self.sequenceStep = -1
@@ -86,7 +86,7 @@ class Game(QWidget):
 			letter = random.choice(list(self.buttons.keys()))
 			self.sequence.append(letter)
 			if len(self.sequence) > self.maxLength:
-				signalBus.bus.victorySignal.emit(True)
+				SignalBus.bus.victorySignal.emit(True)
 			else:
 				QTimer.singleShot(1000, lambda: self.showSequence())
 

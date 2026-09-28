@@ -1,7 +1,7 @@
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QFrame, QLabel, QPushButton
-import signalBus
+import SignalBus
 
 class VictoryScreen(QWidget):
 	victorySignal = Signal(bool)
@@ -34,4 +34,4 @@ class VictoryScreen(QWidget):
 		frame_layout.addWidget(title)
 
 		overlay_layout.addWidget(menu_frame)
-		signalBus.bus.victorySignal.connect(lambda : self.show())
+		SignalBus.bus.victorySignal.connect(lambda : self.show())

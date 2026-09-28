@@ -2,7 +2,7 @@ import json
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QFrame, QLabel, QPushButton
-import signalBus
+import SignalBus
 
 class DifficultyScreen(QWidget):
 	def __init__(self, parent=None):
@@ -48,8 +48,8 @@ class DifficultyScreen(QWidget):
 					                    background-color: #ddd;
 					                }
 					            """)
-			button.clicked.connect(lambda checked=False, current = e: signalBus.bus.difficultySignal.emit(current))
+			button.clicked.connect(lambda checked=False, current = e: SignalBus.bus.difficultySignal.emit(current))
 			frame_layout.addWidget(button)
 
 		overlay_layout.addWidget(menu_frame)
-		signalBus.bus.difficultySignal.connect(lambda: self.hide())
+		SignalBus.bus.difficultySignal.connect(lambda: self.hide())
