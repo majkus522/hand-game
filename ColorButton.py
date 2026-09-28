@@ -26,6 +26,7 @@ class ColorButton(QPushButton):
 
 	def correct(self):
 		self.setStyleSheet(self.STYLE_TEMPLATE.format(color="green"))
+		QTimer.singleShot(500, lambda: self.reset())
 
 	def reset(self):
 		self.setStyleSheet(self.STYLE_TEMPLATE.format(color="white"))

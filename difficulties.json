@@ -3,30 +3,30 @@
 		"text": "Bardzo łatwy",
 		"x": 2,
 		"y": 2,
-		"image": true
+		"sequenceLength": 4
 	},
 	"easy": {
 		"text": "Łatwy",
-		"x": 4,
+		"x": 3,
 		"y": 2,
-		"image": true
+		"sequenceLength": 8
 	},
 	"normal": {
 		"text": "Normalny",
-		"x": 2,
+		"x": 4,
 		"y": 2,
-		"image": false
+		"sequenceLength": 12
 	},
 	"hard": {
 		"text": "Trudny",
-		"x": 4,
-		"y": 2,
-		"image": false
+		"x": 3,
+		"y": 3,
+		"sequenceLength": 14
 	},
 	"veryHard": {
 		"text": "Bardzo trudny",
 		"x": 4,
 		"y": 4,
-		"image": false
+		"sequenceLength": 32
 	}
 }

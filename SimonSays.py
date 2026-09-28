@@ -1,14 +1,11 @@
 from PySide6.QtWidgets import QWidget, QGridLayout
-
 from DifficultyScreen import DifficultyScreen
 from Game import Game
-
-symbols = ["A", "B", "C", "D", "E", "F", "G", "H"]
-gridSize = (4, 2)
+from VictoryScreen import VictoryScreen
 
 class SimonSays(QWidget):
-	def __init__(self):
-		super().__init__()
+	def __init__(self, parent):
+		super().__init__(parent)
 
 		self.setStyleSheet("background-color: #000045")
 
@@ -21,8 +18,7 @@ class SimonSays(QWidget):
 
 		self.difficultyScreen = DifficultyScreen(self)
 		mainLayout.addWidget(self.difficultyScreen, 0, 0)
-		self.difficultyScreen.difficultySelected.connect(self.start_game)
 
-	def start_game(self, difficulty):
-		self.difficultyScreen.hide()
-		self.gameScreen.difficultySelected.emit(difficulty)
+		self.victoryScreen = VictoryScreen(self)
+		mainLayout.addWidget(self.victoryScreen, 0, 0)
+		self.victoryScreen.hide()
