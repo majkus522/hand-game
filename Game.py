@@ -86,7 +86,7 @@ class Game(QWidget):
 			letter = random.choice(list(self.buttons.keys()))
 			self.sequence.append(letter)
 			if len(self.sequence) > self.maxLength:
-				SignalBus.bus.victorySignal.emit(True)
+				SignalBus.bus.victorySignal.emit()
 			else:
 				QTimer.singleShot(1000, lambda: self.showSequence())
 

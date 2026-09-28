@@ -2,6 +2,7 @@ from PySide6.QtCore import QObject, Signal
 
 class SignalBus(QObject):
 	difficultySignal = Signal(str)
-	victorySignal = Signal(bool)
+	victorySignal = Signal()
+	reloadSignal = Signal()
 
 bus = SignalBus()

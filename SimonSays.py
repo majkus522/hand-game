@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QWidget, QGridLayout
 from DifficultyScreen import DifficultyScreen
 from Game import Game
+import SignalBus
 from VictoryScreen import VictoryScreen
 
 class SimonSays(QWidget):
@@ -22,3 +23,9 @@ class SimonSays(QWidget):
 		self.victoryScreen = VictoryScreen(self)
 		mainLayout.addWidget(self.victoryScreen, 0, 0)
 		self.victoryScreen.hide()
+
+		SignalBus.bus.reloadSignal.connect(self.reload)
+
+	def reload(self):
+		self.victoryScreen.hide()
+		self.difficultyScreen.show()

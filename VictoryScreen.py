@@ -27,11 +27,27 @@ class VictoryScreen(QWidget):
 		frame_layout.setContentsMargins(20, 20, 20, 20)
 		frame_layout.setSpacing(15)
 
-		title = QLabel("KONIEC GRY")
+		title = QLabel("WYGRAŁEŚ")
 		title.setStyleSheet("border: none; background-color: transparent;")
 		title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 		title.setFont(QFont("Arial", 20, QFont.Weight.Bold))
 		frame_layout.addWidget(title)
+
+		button = QPushButton("Jeszcze raz")
+		button.setFont(QFont("Arial", 14))
+		button.setMinimumHeight(45)
+		button.setStyleSheet("""
+			QPushButton {
+				background-color: #eee;
+				border: 1px solid #aaa;
+				border-radius: 5px;
+			}
+			QPushButton:hover {
+				background-color: #ddd;
+			}
+		""")
+		button.clicked.connect(lambda: SignalBus.bus.reloadSignal.emit())
+		frame_layout.addWidget(button)
 
 		overlay_layout.addWidget(menu_frame)
 		SignalBus.bus.victorySignal.connect(lambda : self.show())
