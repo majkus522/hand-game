@@ -1,7 +1,7 @@
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QPushButton, QSizePolicy
 
-class ColorButton(QPushButton):
+class LetterButton(QPushButton):
 	def __init__(self, text, parent):
 		super().__init__(text, parent)
 		self.setFixedSize(200, 200)

@@ -3,7 +3,7 @@ import random
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QGridLayout
 import signalBus
-from ColorButton import ColorButton
+from LetterButton import LetterButton
 
 class Game(QWidget):
 	SYMBOLS = ["A", "B", "C", "E", "I", "L", "M", "N", "O", "P", "R", "S", "T", "U", "V", "W", "Y"]
@@ -45,7 +45,7 @@ class Game(QWidget):
 			for y in range(data["y"]):
 				letter = random.choice(symbolsToDo)
 				symbolsToDo.remove(letter)
-				self.buttons[letter] = ColorButton(letter, self)
+				self.buttons[letter] = LetterButton(letter, self)
 				grid_layout.addWidget(self.buttons[letter], y + 1, x + 1)
 
 		grid_layout.setColumnStretch(0, 1)
