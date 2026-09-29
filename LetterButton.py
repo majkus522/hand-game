@@ -42,7 +42,6 @@ class LetterButton(QPushButton):
 		self.setGraphicsEffect(self.shadow)
 
 	def press(self):
-		print("glow")
 		self.setProperty("state", "press")
 		self.style().polish(self)
 		self.shadow.setOffset(0, 0)

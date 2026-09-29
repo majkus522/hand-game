@@ -2,7 +2,7 @@ import json
 import random
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtGui import QFont, QColor
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QGridLayout
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QGridLayout, QSizePolicy
 import SignalBus
 from LetterButton import LetterButton
 
@@ -18,6 +18,7 @@ class Game(QWidget):
 		self.splitLayout = QVBoxLayout(self)
 		self.splitLayout.setSpacing(30)
 
+		self.gamePanel = QWidget()
 		self.game = QWidget()
 		self.label = QLabel()
 
@@ -41,8 +42,26 @@ class Game(QWidget):
 			if child.widget():
 				child.widget().deleteLater()
 
+		self.gamePanel = QWidget(self)
+		self.gamePanel.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+		layout = QVBoxLayout(self.gamePanel)
+		layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
 		self.game = QWidget()
-		self.splitLayout.addWidget(self.game)
+		self.game.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+		self.game.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+		layout.addWidget(self.game)
+		self.game.setObjectName("game")
+		self.game.setStyleSheet("""
+		    QWidget#game
+		    {
+		        background-color: #334155;
+		        border-radius: 20px;
+		        border: none;
+		    }
+		""")
+		self.game.setContentsMargins(80, 40, 80, 40)
+		self.splitLayout.addWidget(self.gamePanel, stretch=1)
 
 		self.label = QLabel("Obecny wynik: 0")
 		self.label.setFont(QFont("Arial", 24, QFont.Weight.Bold))
@@ -123,5 +142,8 @@ class Game(QWidget):
 		if len(self.sequence) > self.sequenceStep + 1:
 			QTimer.singleShot(1000, lambda: self.showSequenceStep())
 		else:
-			self.sequenceStep = 0
-			self.showingSequence = False
+			QTimer.singleShot(1000, self.endSequence)
+
+	def endSequence(self):
+		self.sequenceStep = 0
+		self.showingSequence = False
