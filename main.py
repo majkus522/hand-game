@@ -8,7 +8,7 @@ class MainWindow(QWidget):
 		super().__init__()
 
 		self.setWindowTitle("Game")
-		self.setStyleSheet("background-color: #000045")
+		self.setStyleSheet("background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e293b, stop:1 #0f172a);")
 		self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
 		self.showFullScreen()
 

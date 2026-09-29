@@ -8,7 +8,7 @@ class SimonSays(QWidget):
 	def __init__(self, parent):
 		super().__init__(parent)
 
-		self.setStyleSheet("background-color: #000045")
+		self.setStyleSheet("background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e293b, stop:1 #0f172a);")
 
 		mainLayout = QGridLayout(self)
 		mainLayout.setContentsMargins(0, 0, 0, 0)
