@@ -23,15 +23,15 @@ class VictoryScreen(QWidget):
 		""")
 		menu_frame.setFixedSize(350, 400)
 
-		shadow = QGraphicsDropShadowEffect(self)
-		shadow.setBlurRadius(30)
-		shadow.setColor(QColor(0, 0, 0, 150))
-		shadow.setOffset(0, 8)
-		menu_frame.setGraphicsEffect(shadow)
+		mainShadow = QGraphicsDropShadowEffect(self)
+		mainShadow.setBlurRadius(30)
+		mainShadow.setColor(QColor(0, 0, 0, 150))
+		mainShadow.setOffset(0, 8)
+		menu_frame.setGraphicsEffect(mainShadow)
 
 		frame_layout = QVBoxLayout(menu_frame)
 		frame_layout.setContentsMargins(20, 20, 20, 20)
-		frame_layout.setSpacing(15)
+		frame_layout.setSpacing(20)
 
 		title = QLabel("WYGRAŁEŚ")
 		title.setStyleSheet("border: none; background-color: transparent; color: #f1f5f9;")
@@ -39,26 +39,59 @@ class VictoryScreen(QWidget):
 		title.setFont(QFont("Arial", 22, QFont.Weight.Bold))
 		frame_layout.addWidget(title)
 
-		button = QPushButton("Jeszcze raz")
-		button.setFont(QFont("Arial", 14))
-		button.setMinimumHeight(45)
-		button.setStyleSheet("""
-			QPushButton {
-				background-color: #0f172a;
+		repeatButton = QPushButton("Jeszcze raz")
+		repeatButton.setFont(QFont("Arial", 14))
+		repeatButton.setMinimumHeight(45)
+		repeatButton.setStyleSheet("""
+			QPushButton
+			{
+				background-color: #3b82f6;
 				color: #f8fafc;
-				border: 1px solid #3b82f6;
 				border-radius: 8px;
 			}
-			QPushButton:hover {
+			QPushButton:hover
+			{
 				background-color: #2563eb;
-				border: 1px solid #60a5fa;
 			}
-			QPushButton:pressed {
+			QPushButton:pressed
+			{
 				background-color: #1d4ed8;
 			}
 		""")
-		button.clicked.connect(lambda: SignalBus.bus.reloadSignal.emit())
-		frame_layout.addWidget(button)
+		repeatShadow = QGraphicsDropShadowEffect(repeatButton)
+		repeatShadow.setBlurRadius(0)
+		repeatShadow.setColor("#2f68c5")
+		repeatShadow.setOffset(4, 4)
+		repeatButton.setGraphicsEffect(repeatShadow)
+		repeatButton.clicked.connect(lambda: SignalBus.bus.reloadSignal.emit())
+		frame_layout.addWidget(repeatButton)
+
+		closeButton = QPushButton("Wyjdź z gry")
+		closeButton.setFont(QFont("Arial", 14))
+		closeButton.setMinimumHeight(45)
+		closeButton.setStyleSheet("""
+			QPushButton
+			{
+				background-color: #3b82f6;
+				color: #f8fafc;
+				border-radius: 8px;
+			}
+			QPushButton:hover
+			{
+				background-color: #2563eb;
+			}
+			QPushButton:pressed
+			{
+				background-color: #1d4ed8;
+			}
+		""")
+		closeShadow = QGraphicsDropShadowEffect(closeButton)
+		closeShadow.setBlurRadius(0)
+		closeShadow.setColor("#2f68c5")
+		closeShadow.setOffset(4, 4)
+		closeButton.setGraphicsEffect(closeShadow)
+		closeButton.clicked.connect(lambda: self.window().close())
+		frame_layout.addWidget(closeButton)
 
 		overlay_layout.addWidget(menu_frame)
 		SignalBus.bus.victorySignal.connect(lambda : self.show())

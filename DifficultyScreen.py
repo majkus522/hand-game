@@ -22,15 +22,15 @@ class DifficultyScreen(QWidget):
 		""")
 		menu_frame.setFixedSize(450, 480)
 
-		shadow = QGraphicsDropShadowEffect(self)
-		shadow.setBlurRadius(30)
-		shadow.setColor(QColor(0, 0, 0, 150))
-		shadow.setOffset(0, 8)
-		menu_frame.setGraphicsEffect(shadow)
+		mainShadow = QGraphicsDropShadowEffect(self)
+		mainShadow.setBlurRadius(30)
+		mainShadow.setColor(QColor(0, 0, 0, 150))
+		mainShadow.setOffset(0, 8)
+		menu_frame.setGraphicsEffect(mainShadow)
 
 		frame_layout = QVBoxLayout(menu_frame)
 		frame_layout.setContentsMargins(40, 40, 40, 40)
-		frame_layout.setSpacing(15)
+		frame_layout.setSpacing(20)
 
 		title = QLabel("Wybierz poziom trudności")
 		title.setStyleSheet("border: none; background-color: transparent; color: #f1f5f9;")
@@ -43,21 +43,32 @@ class DifficultyScreen(QWidget):
 			button = QPushButton(data[e]["text"])
 			button.setFont(QFont("Arial", 14, QFont.Weight.Bold))
 			button.setMinimumHeight(45)
-			button.setStyleSheet("""
-			    QPushButton {
-			        background-color: #0f172a;
+
+			baseColor = QColor(data[e]["color"])
+			hoverColor = baseColor.lighter(120)
+			backColor = baseColor.lighter(80)
+
+			button.setStyleSheet(f"""
+			    QPushButton
+			    {{
+			        background-color: {baseColor.name()};
 			        color: #f8fafc;
-			        border: 1px solid #3b82f6;
 			        border-radius: 8px;
-			    }
-			    QPushButton:hover {
-			        background-color: #2563eb;
-			        border: 1px solid #60a5fa;
-			    }
-			    QPushButton:pressed {
-			        background-color: #1d4ed8;
-			    }
+			    }}
+			    QPushButton:hover
+			    {{
+			        background-color: {hoverColor.name()};
+			    }}
+			    QPushButton:pressed
+				{{
+			        background-color: {backColor.name()};
+			    }}
 			""")
+			shadow = QGraphicsDropShadowEffect(button)
+			shadow.setBlurRadius(0)
+			shadow.setColor(backColor)
+			shadow.setOffset(4, 4)
+			button.setGraphicsEffect(shadow)
 			button.clicked.connect(lambda checked=False, current = e: SignalBus.bus.difficultySignal.emit(current))
 			frame_layout.addWidget(button)
 

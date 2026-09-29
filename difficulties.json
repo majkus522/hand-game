@@ -3,30 +3,35 @@
 		"text": "Bardzo łatwy",
 		"x": 2,
 		"y": 2,
-		"sequenceLength": 4
+		"sequenceLength": 4,
+		"color": "#95e644"
 	},
 	"easy": {
 		"text": "Łatwy",
 		"x": 3,
 		"y": 2,
-		"sequenceLength": 8
+		"sequenceLength": 8,
+		"color": "green"
 	},
 	"normal": {
 		"text": "Normalny",
 		"x": 4,
 		"y": 2,
-		"sequenceLength": 12
+		"sequenceLength": 12,
+		"color": "#446ce6"
 	},
 	"hard": {
 		"text": "Trudny",
 		"x": 3,
 		"y": 3,
-		"sequenceLength": 14
+		"sequenceLength": 14,
+		"color": "#e67f44"
 	},
 	"veryHard": {
 		"text": "Bardzo trudny",
 		"x": 4,
 		"y": 4,
-		"sequenceLength": 32
+		"sequenceLength": 32,
+		"color": "red"
 	}
 }
